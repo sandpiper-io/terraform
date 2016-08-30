@@ -1,3 +1,6 @@
+variable "network_name" {
+  default = "mynetwork"
+}
 variable "mysql_root_password" {
   default = "root-password"
 }
