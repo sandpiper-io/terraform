@@ -10,7 +10,7 @@ resource "docker_network" "mynetwork" {
 resource "docker_container" "mysql" {
     image = "${docker_image.mysql.latest}"
     name = "mysql"
-    networks = ["${docker_network.guestnet.name}"]
+    networks = ["${docker_network.mynetwork.name}"]
     env = [
         "MYSQL_ROOT_PASSWORD=${var.mysql_root_password}",
         "MYSQL_DATABASE=${var.mysql_database}",
@@ -19,7 +19,7 @@ resource "docker_container" "mysql" {
     ]
     provisioner "local-exec" {
         command = "docker run --rm \\
-          --net ${docker_network.guestnet.name} \\
+          --net ${docker_network.mynetwork.name} \\
           --env MYSQL_HOST=${var.mysql_host} \\
           --env MYSQL_PORT=${var.mysql_port} \\
           --env MYSQL_DATABASE=${var.mysql_database} \\
@@ -34,7 +34,7 @@ resource "docker_container" "mysql" {
 resource "docker_container" "guestbook" {
     image = "${docker_image.guestbook.latest}"
     name = "guestbook"
-    networks = ["${docker_network.guestnet.name}"]
+    networks = ["${docker_network.mynetwork.name}"]
     env = [
         "MYSQL_HOST=${var.mysql_host}",
         "MYSQL_PORT=${var.mysql_port}",
