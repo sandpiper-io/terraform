@@ -7,7 +7,7 @@ This directory contains Terraform modules that can be used to deploy infrastruct
 This module will build the infrastructure described in [Use MySQL on Carina](https://getcarina.com/docs/tutorials/data-stores-mysql/).  The module as default values for all the parameters that are the same as those on the example page.  To use the module make and save a `.tf` file similar to this one:
 ```
 module "mysql_example" {
-    source = "github.com/sandpiper-io/terraform/carina/mysql"
+    source = "github.com/sandpiper-io/terraform/carina//mysql"
 }
 ```
 Then make sure you have the Carina environment setup:
