@@ -1,3 +1,12 @@
+variable "carina_username" {
+
+}
+variable "carina_api_key" {
+
+}
+variable "cluster_name" {
+  default = "mysql_example"
+}
 variable "network_name" {
   default = "mynetwork"
 }
