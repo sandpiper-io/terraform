@@ -1,4 +1,6 @@
 provider "carina" {
+  username = "${var.carina_username}"
+  api_key = "${var.carina_api_key}"
 }
 
 resource "carina_cluster" "test" {
