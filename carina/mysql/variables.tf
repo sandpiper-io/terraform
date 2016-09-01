@@ -1,8 +1,6 @@
 variable "carina_username" {
-  default = ""
 }
 variable "carina_api_key" {
-  default = ""
 }
 variable "cluster_name" {
   default = "mysql_example"
