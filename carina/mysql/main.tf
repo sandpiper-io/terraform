@@ -21,7 +21,9 @@ resource "docker_container" "mysql" {
         "MYSQL_PASSWORD=${var.mysql_password}",
     ]
     provisioner "local-exec" {
-        command = "docker run --rm \\
+        command = "DOCKER_HOST=${var.carina_cluster_host} \\
+        DOCKER_CERT_PATH=${var.carina_cluster_cert_path} \\
+        &&  docker run --rm \\
           --net ${docker_network.mynetwork.name} \\
           --env MYSQL_HOST=${var.mysql_host} \\
           --env MYSQL_PORT=${var.mysql_port} \\
