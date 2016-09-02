@@ -1,15 +1,7 @@
-provider "carina" {
-  username = "${var.carina_username}"
-  api_key = "${var.carina_api_key}"
-}
-
-resource "carina_cluster" "test" {
-  name = "${var.cluster_name}"
-}
 
 provider "docker" {
-  host = "${carina_cluster.test.docker_host}"
-  cert_path = "${carina_cluster.test.docker_cert_path}"
+  host = "${var.carina_cluster_host}"
+  cert_path = "${var.carina_cluster_cert_path}"
 }
 
 # Create the network for our system

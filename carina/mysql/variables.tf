@@ -1,6 +1,6 @@
-variable "carina_username" {
+variable "carina_cluster_host" {
 }
-variable "carina_api_key" {
+variable "carina_cluster_cert_path" {
 }
 variable "cluster_name" {
   default = "mysql_example"
