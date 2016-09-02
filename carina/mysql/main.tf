@@ -22,8 +22,9 @@ resource "docker_container" "mysql" {
     ]
     provisioner "local-exec" {
         command = "DOCKER_HOST=${var.carina_cluster_host} \\
+        DOCKER_TLS_VERIFY=1 \\
         DOCKER_CERT_PATH=${var.carina_cluster_cert_path} \\
-        &&  docker run --rm \\
+        bash -c \"docker run --rm \\
           --net ${docker_network.mynetwork.name} \\
           --env MYSQL_HOST=${var.mysql_host} \\
           --env MYSQL_PORT=${var.mysql_port} \\
@@ -31,7 +32,7 @@ resource "docker_container" "mysql" {
           --env MYSQL_USER=${var.mysql_user} \\
           --env MYSQL_PASSWORD=${var.mysql_password} \\
           carinamarina/guestbook-mysql \\
-          python app.py create_tables"
+          python app.py create_tables\""
     }
 }
 
